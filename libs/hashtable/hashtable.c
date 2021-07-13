@@ -7,13 +7,13 @@
 
 unsigned int string_hash(const char* s)
 {
-    unsigned int hash = 5381;
+    unsigned int hashtable = 5381;
     while (*s)
-        hash = 33 * hash ^ (unsigned char) *s++;
-    return hash % SIZE;
+        hashtable = 33 * hashtable ^ (unsigned char) *s++;
+    return hashtable % SIZE;
 }
 
-void insert_hash(const char *s) {
+void insert_hash(const char *s, Word **hashtable) {
     unsigned int posicao = string_hash(s);
     unsigned int inicial = posicao;
 
@@ -37,7 +37,7 @@ void insert_hash(const char *s) {
 
 }
 
-unsigned int find_hash(const char *s) {
+unsigned int find_hash(const char *s, Word **hashtable) {
     unsigned int posicao = string_hash(s);
     unsigned int initial = posicao;
     while (hashtable[posicao] != NULL && strcmp(s, hashtable[posicao]->palavra) != 0) {
@@ -49,7 +49,7 @@ unsigned int find_hash(const char *s) {
     return posicao;
 }
 
-void print() {
+void print(Word **hashtable) {
     for (int i = 0; i < SIZE; ++i) {
         if (hashtable[i] != NULL) {
             printf("%s -> %lu \n", hashtable[i]->palavra, hashtable[i]->count);

@@ -3,11 +3,11 @@
 #include "../word_struct.h"
 
 #define SIZE 499883
-Word *hashtable[SIZE];
+
 
 unsigned int string_hash(const char* s);
-void insert_hash(const char *s);
-unsigned int find_hash(const char *s);
-void print();
+void insert_hash(const char *s, Word **hashtable);
+unsigned int find_hash(const char *s, Word **hashtable);
+void print(Word **hashtable);
 
 #endif
