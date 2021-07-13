@@ -1,8 +1,9 @@
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "hashtable.h"
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
 
 unsigned int string_hash(const char* s)
 {
@@ -12,9 +13,10 @@ unsigned int string_hash(const char* s)
     return hash % SIZE;
 }
 
-void insert_hash(char *s) {
+void insert_hash(const char *s) {
     unsigned int posicao = string_hash(s);
     unsigned int inicial = posicao;
+
 
     while (hashtable[posicao] != NULL) {
         if (strcmp(hashtable[posicao]->palavra, s) == 0){
@@ -26,7 +28,7 @@ void insert_hash(char *s) {
         if (posicao == inicial) return;
     }
 
-    char *string = (char *) malloc(strlen(s));
+    char *string = (char *) malloc(strlen(s) + 1);
     strcpy(string, s);
     Word *element = (Word *) malloc(sizeof (Word));
     element->palavra = string;

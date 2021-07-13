@@ -3,7 +3,7 @@
 #include <string.h>
 #include <malloc.h>
 
-void read_files(char *filename) {
+void read_files(char *filename, void (*inserir)(const char *)) {
     FILE *fp;
     int letra, i;
     char palavra[255];
@@ -30,7 +30,7 @@ void read_files(char *filename) {
 
         if (i > 0) {
             palavra[i] = '\000';
-            insert_hash(palavra);
+            inserir(palavra);
         }
     }
 

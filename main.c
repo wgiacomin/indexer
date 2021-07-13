@@ -8,6 +8,6 @@ int main(int argc, char **argv) {
         printf("%s ", argv[i]);
     }
 
-    read_files("D:\\Codigos\\Estruturas de Dados 2\\indexer\\101.txt");
+    read_files("D:\\Codigos\\Estruturas de Dados 2\\indexer\\assets\\small\\101.txt", insert_hash);
     print();
 }
