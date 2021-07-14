@@ -1,17 +1,7 @@
-
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "hashtable.h"
-
-
-unsigned int string_hash(const char* s)
-{
-    unsigned int hashtable = 5381;
-    while (*s)
-        hashtable = 33 * hashtable ^ (unsigned char) *s++;
-    return hashtable % SIZE;
-}
+#include "hash.h"
 
 void insert_hash(const char *s, Word **hashtable) {
     unsigned int posicao = string_hash(s);
@@ -19,7 +9,7 @@ void insert_hash(const char *s, Word **hashtable) {
 
 
     while (hashtable[posicao] != NULL) {
-        if (strcmp(hashtable[posicao]->palavra, s) == 0){
+        if (strcmp(hashtable[posicao]->palavra, s) == 0) {
             hashtable[posicao]->count += 1;
             return;
         }
@@ -30,7 +20,7 @@ void insert_hash(const char *s, Word **hashtable) {
 
     char *string = (char *) malloc(strlen(s) + 1);
     strcpy(string, s);
-    Word *element = (Word *) malloc(sizeof (Word));
+    Word *element = (Word *) malloc(sizeof(Word));
     element->palavra = string;
     element->count = 1;
     hashtable[posicao] = element;

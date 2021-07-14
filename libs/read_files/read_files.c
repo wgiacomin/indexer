@@ -3,7 +3,7 @@
 #include <string.h>
 #include <malloc.h>
 
-void read_files(char *filename, void (*inserir)(const char *, Word **), Word **hashtable) {
+void read_files(char *filename, void (*inserir)(const char *, void **), void **hashtable) {
     FILE *fp;
     int letra, i;
     char palavra[255];
