@@ -70,7 +70,8 @@ void read_files(char *filename, void (*inserir)(const char *, void **), void **h
 }
 
 int count_words(const char *s) {
-    for (int i = 0; s[i] != '\0'; ++i) {
+    int i = 0;
+    for (i = 0; s[i] != '\0'; ++i) {
         if (s[i] == ' ') {
             i++;
         }
