@@ -21,6 +21,11 @@ typedef struct descritor {
     Linked_Word **hashtable;
 } Descritor;
 
+typedef struct file_tfidf {
+    char *file;
+    double tfidf;
+} Entry_TFIDF;
+
 unsigned int string_hash(const char *s);
 
 #endif
