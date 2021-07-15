@@ -26,8 +26,8 @@ void order(Linked_Word *element) {
     }
 }
 
-void insert_hashlinked(const char *s, Descritor *descritor) {
-    unsigned int posicao = string_hash(s);
+void insert_hashlinked(const char *s, Descritor *descritor, unsigned long SIZE) {
+    unsigned int posicao = string_hash(s, SIZE);
     unsigned int inicial = posicao;
 
     if (descritor->inicio == NULL) {

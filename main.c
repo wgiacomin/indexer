@@ -7,6 +7,7 @@
 
 
 int main(int argc, char **argv) {
+    unsigned long SIZE = 499883;
     if (argc < 3) {
         return 0;
     }
@@ -18,15 +19,16 @@ int main(int argc, char **argv) {
         descritor->final = NULL;
         descritor->hashtable = (Linked_Word **) hashtable;
         int n = strtol(argv[2], NULL, 10);
-        read_file(argv[3], (void (*)(const char *, void **)) insert_hashlinked, (void **) descritor);
+        read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_hashlinked, (void **) descritor,
+                  SIZE);
         print_hashlinked(descritor, n);
         libera_hashlinked(descritor);
 
     } else if (strcmp(argv[1], "--freq-word") == 0) {
         void **hashtable = (void **) malloc(sizeof(void *) * SIZE);
-        read_file(argv[3], (void (*)(const char *, void **)) insert_hash, hashtable);
-        find_hash(argv[2], (Word **) hashtable);
-        libera_hash((Word **) hashtable);
+        read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_hash, hashtable, SIZE);
+        find_hash(argv[2], (Word **) hashtable, SIZE);
+        libera_hash((Word **) hashtable, SIZE);
 
     } else if (strcmp(argv[1], "--search") == 0) {
         int relevant_file_number = (argc - 3) / 2 + 1;

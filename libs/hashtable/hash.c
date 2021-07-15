@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include "hash.h"
 
-void insert_hash(const char *s, Word **hashtable) {
-    unsigned int posicao = string_hash(s);
+void insert_hash(const char *s, Word **hashtable, unsigned long SIZE) {
+    unsigned int posicao = string_hash(s, SIZE);
     unsigned int inicial = posicao;
 
 
@@ -27,8 +27,8 @@ void insert_hash(const char *s, Word **hashtable) {
 
 }
 
-void find_hash(const char *s, Word **hashtable) {
-    unsigned int posicao = string_hash(s);
+void find_hash(const char *s, Word **hashtable, unsigned long SIZE) {
+    unsigned int posicao = string_hash(s, SIZE);
     unsigned int initial = posicao;
     while (hashtable[posicao] != NULL && strcmp(s, hashtable[posicao]->palavra) != 0) {
         posicao++;
@@ -42,7 +42,7 @@ void find_hash(const char *s, Word **hashtable) {
            hashtable[posicao]->count);
 }
 
-void libera_hash(Word **hashtable) {
+void libera_hash(Word **hashtable, unsigned long SIZE) {
     for (int i = 0; i < SIZE; ++i) {
         if (hashtable[i] != NULL) {
             free(hashtable[i]);

@@ -1,7 +1,5 @@
 #ifndef INDEXER_WORD_STRUCT_H
 #define INDEXER_WORD_STRUCT_H
-#define SIZE 499883
-
 
 typedef struct word_count {
     char *palavra;
@@ -26,6 +24,6 @@ typedef struct file_tfidf {
     double tfidf;
 } Entry_TFIDF;
 
-unsigned int string_hash(const char *s);
+unsigned int string_hash(const char *s, unsigned long SIZE);
 
 #endif
