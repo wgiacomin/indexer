@@ -21,13 +21,10 @@ typedef struct descritor {
     Linked_Word **hashtable;
 } Descritor;
 
-typedef struct word_number {
-    Word **word_table;
-    unsigned long n;
-} Word_Elements;
 
 typedef struct file_table {
-    Word_Elements *table;
+    Word **word_table;
+    unsigned long n;
     double tfidf;
     char *file_name;
 } File_Elements;

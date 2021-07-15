@@ -37,18 +37,19 @@ int main(int argc, char **argv) {
         unsigned long total_number_of_words;
         int number_of_terms;
         File_Elements **files_table = (File_Elements **) malloc(sizeof(File_Elements *) * file_number);
+        number_of_terms = count_words(argv[2]);
 
         for (int i = 3; i < argc; ++i) {
-            Word_Elements *word_elements = count_words(argv[2]);
-            number_of_terms = (int) word_elements->n;
-            total_number_of_words = read_file(argv[3],
-                                              (void (*)(const char *, void **, unsigned long)) insert_hashsimple,
-                                              (void **) word_elements->word_table, word_elements->n);
-            word_elements->n = total_number_of_words;
-
             File_Elements *file_entry = (File_Elements *) malloc(sizeof(File_Elements));
-            file_entry->table = word_elements;
-            file_entry->file_name = argv[3];
+            Word **word_table = create_table(number_of_terms, argv[2]);
+
+            total_number_of_words = read_file(argv[i],
+                                              (void (*)(const char *, void **, unsigned long)) insert_hashsimple,
+                                              (void **) word_table, number_of_terms);
+
+            file_entry->n = total_number_of_words;
+            file_entry->word_table = word_table;
+            file_entry->file_name = argv[i];
             files_table[i - 3] = file_entry;
         }
         calc_tfidf(files_table, number_of_terms, file_number);

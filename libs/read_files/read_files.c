@@ -40,43 +40,15 @@ read_file(char *filename, void (*inserir)(const char *, void **, unsigned long),
     return count;
 }
 
-Word_Elements *count_words(const char *s) {
+int count_words(const char *s) {
     int j = 1;
-    int k, l;
-    Word_Elements *results = (Word_Elements *) malloc((sizeof(Word_Elements)));
+    int k;
+
     for (k = 0; s[k] != '\0'; ++k) {
         if (s[k] == ' ') {
             j++;
         }
     }
-    results->n = j;
-    l = 0;
-    Word **word_table = (Word **) malloc(sizeof(Word *) * j);
-    char palavra[50];
-    j = 0;
-    for (int i = 0; i < k + 1; ++i) {
-        if (s[i] == ' ' || s[i] == '\0') {
-            if (j > 0) {
-                palavra[i] = '\000';
-                Word *element = (Word *) malloc(sizeof(Word));
-                char *string = (char *) malloc(strlen(s) + 1);
-                strcpy(string, palavra);
-                element->palavra = string;
-                element->count = 0;
-                word_table[l] = element;
-                l++;
-            }
-            j = 0;
 
-        } else if ((s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123)) {
-            if (s[i] > 64 && s[i] < 91) {
-                palavra[j] = (char) ((int) s[i] + 32);
-            } else {
-                palavra[j] = s[i];
-            }
-            j++;
-        }
-    }
-    results->word_table = word_table;
-    return results;
+    return j;
 }
