@@ -5,8 +5,10 @@
 
 void insert_hash(const char *s, Word **hashtable);
 
-unsigned int find_hash(const char *s, Word **hashtable);
+void find_hash(const char *s, Word **hashtable);
 
 void print(Word **hashtable);
+
+void libera_hash(Word **hashtable);
 
 #endif

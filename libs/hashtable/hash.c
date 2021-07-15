@@ -27,16 +27,19 @@ void insert_hash(const char *s, Word **hashtable) {
 
 }
 
-unsigned int find_hash(const char *s, Word **hashtable) {
+void find_hash(const char *s, Word **hashtable) {
     unsigned int posicao = string_hash(s);
     unsigned int initial = posicao;
     while (hashtable[posicao] != NULL && strcmp(s, hashtable[posicao]->palavra) != 0) {
         posicao++;
         if (posicao > SIZE) posicao = 0;
-        if (posicao == initial) return -1;
-        if (hashtable[posicao] == NULL) return -1;
+        if (posicao == initial || hashtable[posicao] == NULL) {
+            printf("O termo não foi encontrado. \n");
+        };
     }
-    return posicao;
+
+    printf("A palavra \"%s\" foi encontrada %lu vezes no arquivo.\n", hashtable[posicao]->palavra,
+           hashtable[posicao]->count);
 }
 
 void print(Word **hashtable) {
@@ -46,4 +49,13 @@ void print(Word **hashtable) {
         }
     }
     printf("\n\n");
+}
+
+void libera_hash(Word **hashtable) {
+    for (int i = 0; i < SIZE; ++i) {
+        if (hashtable[i] != NULL) {
+            free(hashtable[i]);
+        }
+    }
+    free(hashtable);
 }

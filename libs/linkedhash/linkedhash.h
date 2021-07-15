@@ -9,4 +9,6 @@ unsigned int find_linkedhash(const char *s, Descritor *descritor);
 
 void print_linked(Descritor *descritor, int n);
 
+void libera_linkedhash(Descritor *descritor);
+
 #endif

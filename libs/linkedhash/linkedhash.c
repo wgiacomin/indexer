@@ -9,14 +9,20 @@ void order(Linked_Word *element) {
         return;
     }
 
+    Linked_Word *aux;
     while (element->ante->count < element->count) {
-        element->ante->prox = element->prox;
-        element->prox = element->ante;
-        element->ante = element->prox->ante;
-        element->prox->ante = element;
+        aux = element->ante;
+        aux->prox = element->prox;
+        element->ante = aux->ante;
+        aux->ante = element;
+        element->prox = aux;
+        if (aux->prox != NULL) {
+            aux->prox->ante = aux;
+        }
         if (element->ante == NULL) {
             return;
         }
+        element->ante->prox = element;
     }
 }
 
@@ -56,7 +62,7 @@ void insert_linkedhash(const char *s, Descritor *descritor) {
     element->count = 1;
     element->prox = NULL;
     element->ante = descritor->final;
-    element->ante->prox = element;
+    descritor->final->prox = element;
     descritor->final = element;
     descritor->hashtable[posicao] = element;
 }
@@ -75,10 +81,30 @@ unsigned int find_linkedhash(const char *s, Descritor *descritor) {
 
 void print_linked(Descritor *descritor, int n) {
     Linked_Word *element = descritor->inicio;
+    printf("TOP %d: \n", n);
+    printf("posicao |     vezes | palavra \n");
     for (int i = 0; i < n; ++i) {
-        printf("%s -> %lu \n", element->palavra, element->count);
-        element = element->prox;
+        if (element->count < 999999999) {
+            printf("%7d | %9lu | %s\n", i + 1, element->count, element->palavra);
+            element = element->prox;
+        } else {
+            printf("%7d | %lu | %s\n", i + 1, element->count, element->palavra);
+        }
     }
 
     printf("\n\n");
+}
+
+void libera_linkedhash(Descritor *descritor) {
+    Linked_Word *aux, *element = descritor->inicio;
+    int i = 0;
+    while (element->prox != NULL) {
+        i++;
+        aux = element;
+        element = element->prox;
+        free(aux);
+    }
+    free(element);
+    free(descritor->hashtable);
+    free(descritor);
 }

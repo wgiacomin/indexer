@@ -9,7 +9,7 @@ void read_files(char *filename, void (*inserir)(const char *, void **), void **h
     char palavra[255];
 
     if ((fp = fopen(filename, "r")) == NULL) {
-        printf("Erro ao abrir o arquivo %s.", filename);
+        printf("Erro ao abrir o arquivo \"%s\".", filename);
         return;
     }
 
