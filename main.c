@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "libs/hashtable/hash.h"
-#include "libs/linkedhash/linkedhash.h"
+#include "libs/hashlinked/linkedhash.h"
 #include "libs/read_files/read_files.h"
 
 
@@ -18,9 +18,9 @@ int main(int argc, char **argv) {
         descritor->final = NULL;
         descritor->hashtable = (Linked_Word **) hashtable;
         int n = strtol(argv[2], NULL, 10);
-        read_file(argv[3], (void (*)(const char *, void **)) insert_linkedhash, (void **) descritor);
-        print_linked(descritor, n);
-        libera_linkedhash(descritor);
+        read_file(argv[3], (void (*)(const char *, void **)) insert_hashlinked, (void **) descritor);
+        print_hashlinked(descritor, n);
+        libera_hashlinked(descritor);
 
     } else if (strcmp(argv[1], "--freq-word") == 0) {
         void **hashtable = (void **) malloc(sizeof(void *) * SIZE);

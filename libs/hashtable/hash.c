@@ -42,15 +42,6 @@ void find_hash(const char *s, Word **hashtable) {
            hashtable[posicao]->count);
 }
 
-void print(Word **hashtable) {
-    for (int i = 0; i < SIZE; ++i) {
-        if (hashtable[i] != NULL) {
-            printf("%s -> %lu \n", hashtable[i]->palavra, hashtable[i]->count);
-        }
-    }
-    printf("\n\n");
-}
-
 void libera_hash(Word **hashtable) {
     for (int i = 0; i < SIZE; ++i) {
         if (hashtable[i] != NULL) {

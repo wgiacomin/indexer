@@ -26,7 +26,7 @@ void order(Linked_Word *element) {
     }
 }
 
-void insert_linkedhash(const char *s, Descritor *descritor) {
+void insert_hashlinked(const char *s, Descritor *descritor) {
     unsigned int posicao = string_hash(s);
     unsigned int inicial = posicao;
 
@@ -67,19 +67,7 @@ void insert_linkedhash(const char *s, Descritor *descritor) {
     descritor->hashtable[posicao] = element;
 }
 
-unsigned int find_linkedhash(const char *s, Descritor *descritor) {
-    unsigned int posicao = string_hash(s);
-    unsigned int initial = posicao;
-    while (descritor->hashtable[posicao] != NULL && strcmp(s, descritor->hashtable[posicao]->palavra) != 0) {
-        posicao++;
-        if (posicao > SIZE) posicao = 0;
-        if (posicao == initial) return -1;
-        if (descritor->hashtable[posicao] == NULL) return -1;
-    }
-    return posicao;
-}
-
-void print_linked(Descritor *descritor, int n) {
+void print_hashlinked(Descritor *descritor, int n) {
     Linked_Word *element = descritor->inicio;
     printf("TOP %d: \n", n);
     printf("posicao |     vezes | palavra \n");
@@ -95,7 +83,7 @@ void print_linked(Descritor *descritor, int n) {
     printf("\n\n");
 }
 
-void libera_linkedhash(Descritor *descritor) {
+void libera_hashlinked(Descritor *descritor) {
     Linked_Word *aux, *element = descritor->inicio;
     int i = 0;
     while (element->prox != NULL) {
