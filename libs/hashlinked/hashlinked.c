@@ -1,5 +1,4 @@
 #include "hashlinked.h"
-#include "../word_struct.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -69,14 +68,14 @@ void insert_hashlinked(const char *s, Descritor *descritor, unsigned long SIZE) 
 
 void print_hashlinked(Descritor *descritor, int n) {
     Linked_Word *element = descritor->inicio;
-    printf("TOP %d: \n", n);
-    printf("posicao |     vezes | palavra \n");
+    printf("As %d palavras que mais se repetiram foram: \n\n", n);
+    printf("    n |     vezes | palavra \n");
     for (int i = 0; i < n; ++i) {
         if (element->count < 999999999) {
-            printf("%7d | %9lu | %s\n", i + 1, element->count, element->palavra);
+            printf("%5d | %9lu | %s\n", i + 1, element->count, element->palavra);
             element = element->prox;
         } else {
-            printf("%7d | %lu | %s\n", i + 1, element->count, element->palavra);
+            printf("%5d | %lu | %s\n", i + 1, element->count, element->palavra);
         }
     }
 

@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <malloc.h>
-#include "hashsimple.h"
+#include "hashsimples.h"
 
 Word **create_table(int n, const char *s) {
     int l = 0, j;
@@ -46,10 +46,22 @@ void insert_hashsimple(const char *s, Word **hashtable, unsigned long SIZE) {
     }
 }
 
+void swap(File_Elements **a, int i, int j) {
+    File_Elements *swap = a[i];
+    a[i] = a[j];
+    a[j] = swap;
+}
+
+void insertion_sort(File_Elements **a, int r) {
+    for (int i = 0; i <= r; i++)
+        for (int j = i; j > 0 && a[j]->tfidf > a[j - 1]->tfidf; j--)
+            swap(a, j, j - 1);
+}
+
 void calc_tfidf(File_Elements **elements, unsigned long SIZE, int number_of_files) {
     double tfidf;
     double tf;
-    int count = 0;
+    int count;
 
     for (int i = 0; i < SIZE; ++i) {
         count = 0;
@@ -79,8 +91,31 @@ void calc_tfidf(File_Elements **elements, unsigned long SIZE, int number_of_file
         elements[j]->tfidf = tfidf;
     }
 
-    for (int j = 0; j < number_of_files; ++j) {
-        printf("%f %s \n", elements[j]->tfidf, elements[j]->file_name);
+}
+
+void print_hashsimple(File_Elements **elements, int number_of_files, char *s) {
+    int count = 0;
+    insertion_sort(elements, number_of_files - 1);
+    printf("A lista dos %d arquivos mais relevantes para o termo \"%s\":\n\n", number_of_files / 2 + 1, s);
+    printf("   TFIDF | Diretorio \n");
+    for (int j = 0; j < number_of_files / 2 + 1; ++j) {
+        if (elements[j]->tfidf > 0) {
+            printf("%.6f | %s \n", elements[j]->tfidf, elements[j]->file_name);
+            count++;
+        }
+    }
+    if (count == 0) {
+        printf("     -   |     -      \n");
     }
 }
 
+void libera_simples(File_Elements **elements, int file_number, int word_number) {
+    for (int j = 0; j < file_number; ++j) {
+        for (int k = 0; k < word_number; ++k) {
+            free(elements[j]->word_table[k]->palavra);
+            free(elements[j]->word_table[k]);
+        }
+        free(elements[j]);
+    }
+    free(elements);
+}

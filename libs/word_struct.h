@@ -21,7 +21,6 @@ typedef struct descritor {
     Linked_Word **hashtable;
 } Descritor;
 
-
 typedef struct file_table {
     Word **word_table;
     unsigned long n;
@@ -29,6 +28,6 @@ typedef struct file_table {
     char *file_name;
 } File_Elements;
 
-unsigned int string_hash(const char *s, unsigned long SIZE);
+unsigned long string_hash(const char *s, unsigned long SIZE);
 
 #endif

@@ -4,7 +4,7 @@
 #include "libs/hashtable/hash.h"
 #include "libs/hashlinked/hashlinked.h"
 #include "libs/read_files/read_files.h"
-#include "libs/hashsimple/hashsimple.h"
+#include "libs/hashsimples/hashsimples.h"
 
 
 int main(int argc, char **argv) {
@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     }
 
     if (strcmp(argv[1], "--freq") == 0) {
-        unsigned long SIZE = 499883;
+        unsigned long SIZE = 5000011;
         void **hashtable = (void **) malloc(sizeof(void *) * SIZE);
         Descritor *descritor = (Descritor *) malloc(sizeof(Descritor));
         descritor->inicio = NULL;
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
         libera_hashlinked(descritor);
 
     } else if (strcmp(argv[1], "--freq-word") == 0) {
-        unsigned long SIZE = 499883;
+        unsigned long SIZE = 5000011;
         void **hashtable = (void **) malloc(sizeof(void *) * SIZE);
         read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_hash, hashtable, SIZE);
         find_hash(argv[2], (Word **) hashtable, SIZE);
@@ -53,9 +53,10 @@ int main(int argc, char **argv) {
             files_table[i - 3] = file_entry;
         }
         calc_tfidf(files_table, number_of_terms, file_number);
+        print_hashsimple(files_table, file_number, argv[2]);
+        libera_simples(files_table, file_number, number_of_terms);
+
     } else {
         printf("Comando não encontrado.");
     }
-
-
 }
