@@ -3,9 +3,9 @@
 
 #include "../word_struct.h"
 
-void
+unsigned long
 read_file(char *filename, void (*inserir)(const char *, void **, unsigned long), void **hashtable, unsigned long SIZE);
 
-int count_words(const char *s);
+Word_Elements *count_words(const char *s);
 
 #endif

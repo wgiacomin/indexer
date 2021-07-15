@@ -1,4 +1,4 @@
-#include "linkedhash.h"
+#include "hashlinked.h"
 #include "../word_struct.h"
 #include <stdlib.h>
 #include <string.h>
@@ -46,7 +46,7 @@ void insert_hashlinked(const char *s, Descritor *descritor, unsigned long SIZE) 
 
     while (descritor->hashtable[posicao] != NULL) {
         if (strcmp(descritor->hashtable[posicao]->palavra, s) == 0) {
-            descritor->hashtable[posicao]->count += 1;
+            descritor->hashtable[posicao]->count++;
             order(descritor->hashtable[posicao]);
             return;
         }

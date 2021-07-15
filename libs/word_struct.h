@@ -3,6 +3,8 @@
 
 typedef struct word_count {
     char *palavra;
+    double tf;
+    double tfidf;
     unsigned long count;
 } Word;
 
@@ -19,10 +21,16 @@ typedef struct descritor {
     Linked_Word **hashtable;
 } Descritor;
 
-typedef struct file_tfidf {
-    char *file;
+typedef struct word_number {
+    Word **word_table;
+    unsigned long n;
+} Word_Elements;
+
+typedef struct file_table {
+    Word_Elements *table;
     double tfidf;
-} Entry_TFIDF;
+    char *file_name;
+} File_Elements;
 
 unsigned int string_hash(const char *s, unsigned long SIZE);
 

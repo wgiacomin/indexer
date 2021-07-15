@@ -10,7 +10,7 @@ void insert_hash(const char *s, Word **hashtable, unsigned long SIZE) {
 
     while (hashtable[posicao] != NULL) {
         if (strcmp(hashtable[posicao]->palavra, s) == 0) {
-            hashtable[posicao]->count += 1;
+            hashtable[posicao]->count++;
             return;
         }
         posicao++;
