@@ -1,4 +1,4 @@
-# Especificação do Trabalho prático 2020/2
+# Indexador de Palavras em C
 
 O trabalho consiste na criação de um programa, em linguagem C, capaz de indexar palavras de um ou mais documentos de
 texto. Tal programa deverá ser nomeado como `indexer`.
@@ -50,8 +50,6 @@ OPÇÕES
 
 ## Requisitos
 
-O trabalho deve ser realizado em grupos de até 2 alunos.
-
 O programa deve conter a implementação de uma estrutura de dados eficiente capaz de atender às funcionalidades descritas
 acima, mesmo quando executado com arquivos grandes (> 1GB). Tal estrutura deve ser implementada pelos próprios alunos e
 deverá ser explicada no dia da defesa do trabalho.
@@ -68,24 +66,6 @@ Como informado acima, o funcionamento da aplicação **indexer** tem as seguinte
 - Transformar todas os caracteres em minúsculo, ou seja, comportamento de *ignore-case*;
 - Ignorar caracteres que não sejam letras, como números e pontuações:
     - Por conta disso, palavras compostas como `bem-vindo` serão separadas em duas, `bem` e `vindo`.
-
-## Entrega e Defesa
-
-A avaliação do trabalho será composta pela entrega do código-fonte e de uma defesa.
-
-A defesa será realizada por meio de um vídeo gravado, com a participação de todos os integrantes do grupo (pode ser
-apenas voz), demonstrando a aplicação em funcionamento. Durante o vídeo, deve ser descrita e justificada a estrutura de
-dados utilizada e apresentado de maneira breve o código-fonte. O video deve ter no máximo 10min.
-
-A entrega será realizada por meio da criação de um repositório no gitlab
-(enviar endereço do repositório por tarefa no moodle). A data da entrega será definida no moodle da disciplina.
-
-Basicamente, vou clonar o repositório recebido, executar o comando `make`e a partir daí, um programa chamado `indexer`
-já deve estar disponível para que eu inicie testes em minha máquina.
-
-Caso eu não seja capaz de compilar e executar o trabalho na minha máquina, a nota máxima será 50.
-
-**Data da entrega:** 13/08/2021 pelo moodle da disciplina.
 
 ## Cálculo de Relevância
 
