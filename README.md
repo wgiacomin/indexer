@@ -1,5 +1,7 @@
 # Indexador de Palavras em C
 
+Simples indexador de palavras em C baseado em tabelas hash.
+
 ## Arquivos para testes
 
 * http://200.236.3.126:8999/ds141-texts/
