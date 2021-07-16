@@ -1,10 +1,10 @@
 #include <malloc.h>
 #include <string.h>
 #include <stdio.h>
-#include "libs/hashtable/hash.h"
-#include "libs/hashlinked/hashlinked.h"
+#include "libs/hash_table//hash_table.h"
+#include "libs/hash_with_linked_list/hash_with_linked_list.h"
 #include "libs/read_files/read_files.h"
-#include "libs/hashsimples/hashsimples.h"
+#include "libs/simple_array/simple_array.h"
 
 
 int main(int argc, char **argv) {

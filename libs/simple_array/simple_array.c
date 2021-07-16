@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <malloc.h>
-#include "hashsimples.h"
+#include "simple_array.h"
 
 Word **create_table(int n, const char *s) {
     int l = 0, j;

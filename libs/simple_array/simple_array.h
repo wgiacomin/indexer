@@ -1,5 +1,5 @@
-#ifndef INDEXER_HASHSIMPLES_H
-#define INDEXER_HASHSIMPLES_H
+#ifndef INDEXER_SIMPLE_ARRAY_H
+#define INDEXER_SIMPLE_ARRAY_H
 
 #include "../word_struct.h"
 

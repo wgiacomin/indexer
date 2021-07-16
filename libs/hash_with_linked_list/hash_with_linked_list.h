@@ -1,5 +1,5 @@
-#ifndef INDEXER_HASHLINKED_H
-#define INDEXER_HASHLINKED_H
+#ifndef INDEXER_HASH_WITH_LINKED_LIST_H
+#define INDEXER_HASH_WITH_LINKED_LIST_H
 
 #include "../word_struct.h"
 

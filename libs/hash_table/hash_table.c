@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "hash.h"
+#include "hash_table.h"
 
 void insert_hash(const char *s, Word **hashtable, unsigned long SIZE) {
     unsigned int posicao = string_hash(s, SIZE);
