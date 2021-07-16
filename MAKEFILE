@@ -13,13 +13,13 @@ read_files.o: ./libs/read_files/read_files.c word_struct.o
 	gcc -o read_files.o ./libs/read_files/read_files.c word_struct.o -c -W -Wall -pedatic
 
 hashtable.o: libs/hash_table libs/hash_table word_struct.o
-	gcc -o hashtable.o ./libs/hashtable/hash.c -c -W -Wall -pedatic
+	gcc -o hash_tabletable.o ./libs/hash_tabletable/hash.c -c -W -Wall -pedatic
 
 hashsimples.o: ./hashsimples/hashsimples.c ./hashsimples/hashsimples.h word_struct.o
-	gcc -o hashsimples.o ./hashsimples/hashsimples.c -c -W -Wall -pedatic
+	gcc -o simple_hash.o ./simple_hash/simple_hash.c -c -W -Wall -pedatic
 
 hashlinked.o: ./hashlinked/hashlinked.c ./hashlinked/hashlinked.h word_struct.o
-	gcc -o hashlinked.o ./hashlinked/hashlinked.c -c -W -Wall -pedatic
+	gcc -o hash_with_linked_list.o ./hash_with_linked_list/hash_with_linked_list.c -c -W -Wall -pedatic
 
 clean:
 	rm -rf *.o *~indexer
