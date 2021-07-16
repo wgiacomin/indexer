@@ -43,7 +43,7 @@ void find_hash(const char *s, Word **hashtable, unsigned long SIZE) {
 }
 
 void libera_hash(Word **hashtable, unsigned long SIZE) {
-    for (int i = 0; i < SIZE; ++i) {
+    for (unsigned int i = 0; i < SIZE; ++i) {
         if (hashtable[i] != NULL) {
             free(hashtable[i]);
         }

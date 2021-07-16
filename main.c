@@ -1,7 +1,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <stdio.h>
-#include "libs/hash_table//hash_table.h"
+#include "libs/hash_table/hash_table.h"
 #include "libs/hash_with_linked_list/hash_with_linked_list.h"
 #include "libs/read_files/read_files.h"
 #include "libs/simple_array/simple_array.h"
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
         descritor->final = NULL;
         descritor->hashtable = (Linked_Word **) hashtable;
         int n = strtol(argv[2], NULL, 10);
-        read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_hashlinked, (void **) descritor,
+        read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_linked_hash, (void **) descritor,
                   SIZE);
         print_hashlinked(descritor, n);
         libera_hashlinked(descritor);

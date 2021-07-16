@@ -39,7 +39,7 @@ Word **create_table(int n, const char *s) {
 }
 
 void insert_hashsimple(const char *s, Word **hashtable, unsigned long SIZE) {
-    for (int i = 0; i < SIZE; ++i) {
+    for (unsigned int i = 0; i < SIZE; ++i) {
         if (strcmp(hashtable[i]->palavra, s) == 0) {
             hashtable[i]->count++;
         }
@@ -63,7 +63,7 @@ void calc_tfidf(File_Elements **elements, unsigned long SIZE, int number_of_file
     double tf;
     int count;
 
-    for (int i = 0; i < SIZE; ++i) {
+    for (unsigned int i = 0; i < SIZE; ++i) {
         count = 0;
         for (int j = 0; j < number_of_files; ++j) {
             tf = (double) elements[j]->word_table[i]->count / elements[j]->n;
@@ -84,7 +84,7 @@ void calc_tfidf(File_Elements **elements, unsigned long SIZE, int number_of_file
 
     for (int j = 0; j < number_of_files; ++j) {
         tfidf = 0;
-        for (int i = 0; i < SIZE; ++i) {
+        for (unsigned int i = 0; i < SIZE; ++i) {
             tfidf += elements[j]->word_table[i]->tfidf;
         }
         tfidf = tfidf / SIZE;
