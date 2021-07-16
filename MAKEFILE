@@ -1,0 +1,28 @@
+all: indexer
+
+indexer: main.o word_struct.o
+	gcc -o indexer main.o word_struct.o
+
+main.o: main.c word_struct.o read_files.o hashtable.o
+	gcc -o main.o main.c -c -W -Wall -pedatic
+
+word_struct.o: ./libs/word_struct.c ./libs/word_struct.h
+	gcc -o word_struct.o word_struct.c -c -W -Wall -pedatic
+
+read_files.o: ./libs/read_files/read_files.c word_struct.o
+	gcc -o read_files.o ./libs/read_files/read_files.c word_struct.o -c -W -Wall -pedatic
+
+hashtable.o: libs/hash_table libs/hash_table word_struct.o
+	gcc -o hashtable.o ./libs/hashtable/hash.c -c -W -Wall -pedatic
+
+hashsimples.o: ./hashsimples/hashsimples.c ./hashsimples/hashsimples.h word_struct.o
+	gcc -o hashsimples.o ./hashsimples/hashsimples.c -c -W -Wall -pedatic
+
+hashlinked.o: ./hashlinked/hashlinked.c ./hashlinked/hashlinked.h word_struct.o
+	gcc -o hashlinked.o ./hashlinked/hashlinked.c -c -W -Wall -pedatic
+
+clean:
+	rm -rf *.o *~indexer
+
+
+
