@@ -1,8 +1,5 @@
 # Indexador de Palavras em C
 
-O trabalho consiste na criação de um programa, em linguagem C, capaz de indexar palavras de um ou mais documentos de
-texto. Tal programa deverá ser nomeado como `indexer`.
-
 ## Arquivos para testes
 
 * http://200.236.3.126:8999/ds141-texts/
