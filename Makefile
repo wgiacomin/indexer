@@ -1,7 +1,7 @@
 all: indexer
 
 indexer: main.o word_struct.o read_files.o hash_table.o simple_array.o hash_with_linked_list.o
-	gcc -o indexer main.o word_struct.o read_files.o hash_table.o simple_array.o hash_with_linked_list.o -std=c11
+	gcc -o indexer main.o word_struct.o read_files.o hash_table.o simple_array.o hash_with_linked_list.o -std=c11 -lm
 
 main.o: main.c ./libs/word_struct.h ./libs/read_files/read_files.h ./libs/hash_table/hash_table.h ./libs/simple_array/simple_array.h ./libs/hash_with_linked_list/hash_with_linked_list.h
 	gcc -o main.o main.c -c -W -Wall -ansi -pedantic -std=c11
