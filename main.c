@@ -26,11 +26,14 @@ int main(int argc, char **argv) {
         libera_hashlinked(descritor);
 
     } else if (strcmp(argv[1], "--freq-word") == 0) {
-        unsigned long SIZE = 5000011;
-        void **hashtable = (void **) malloc(sizeof(void *) * SIZE);
-        read_file(argv[3], (void (*)(const char *, void **, unsigned long)) insert_hash, hashtable, SIZE);
-        find_hash(argv[2], (Word **) hashtable, SIZE);
-        libera_hash((Word **) hashtable, SIZE);
+        Word **word_table = create_table(1, argv[2]);
+        read_file(argv[3],
+                  (void (*)(const char *, void **, unsigned long)) insert_hashsimple,
+                  (void **) word_table, 1);
+        printf("A palavra \"%s\" foi encontrada %lu vezes no arquivo.\n", word_table[0]->palavra,
+               word_table[0]->count);
+        free(word_table[0]);
+        free(word_table);
 
     } else if (strcmp(argv[1], "--search") == 0) {
         int file_number = (argc - 3);
