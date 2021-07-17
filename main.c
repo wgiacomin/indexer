@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     } else if (strcmp(argv[1], "--freq-word") == 0) {
         Word **word_table = create_table(1, argv[2]);
         read_file(argv[3],
-                  (void (*)(const char *, void **, unsigned long)) insert_hashsimple,
+                  (void (*)(const char *, void **, unsigned long)) insert_simple_array,
                   (void **) word_table, 1);
         printf("A palavra \"%s\" foi encontrada %lu vezes no arquivo.\n", word_table[0]->palavra,
                word_table[0]->count);
@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
             Word **word_table = create_table(number_of_terms, argv[2]);
 
             total_number_of_words = read_file(argv[i],
-                                              (void (*)(const char *, void **, unsigned long)) insert_hashsimple,
+                                              (void (*)(const char *, void **, unsigned long)) insert_simple_array,
                                               (void **) word_table, number_of_terms);
 
             file_entry->n = total_number_of_words;
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
             files_table[i - 3] = file_entry;
         }
         calc_tfidf(files_table, number_of_terms, file_number);
-        print_hashsimple(files_table, file_number, argv[2]);
+        print_simple_array(files_table, file_number, argv[2]);
         libera_simples(files_table, file_number, number_of_terms);
 
     } else {

@@ -38,7 +38,7 @@ Word **create_table(int n, const char *s) {
     return word_table;
 }
 
-void insert_hashsimple(const char *s, Word **hashtable, unsigned long SIZE) {
+void insert_simple_array(const char *s, Word **hashtable, unsigned long SIZE) {
     for (unsigned int i = 0; i < SIZE; ++i) {
         if (strcmp(hashtable[i]->palavra, s) == 0) {
             hashtable[i]->count++;
@@ -93,7 +93,7 @@ void calc_tfidf(File_Elements **elements, unsigned long SIZE, int number_of_file
 
 }
 
-void print_hashsimple(File_Elements **elements, int number_of_files, char *s) {
+void print_simple_array(File_Elements **elements, int number_of_files, char *s) {
     int count = 0;
     insertion_sort(elements, number_of_files - 1);
     printf("A lista dos %d arquivos mais relevantes para o termo \"%s\":\n\n", number_of_files / 2 + 1, s);
